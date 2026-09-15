@@ -13,4 +13,6 @@ OpenAU is a lightweight menu bar host for running an Audio Unit plug-in chain on
 
 Community previews are ad-hoc signed, so macOS displays an unidentified-developer warning and may ask for audio permission again after an update.
 
-A Support OpenAU link will be added when the project's PayPal URL is available.
+## Support OpenAU
+
+If OpenAU is useful to you, [support its development on PayPal](https://paypal.me/EkinOskay).
