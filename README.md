@@ -8,7 +8,7 @@ OpenAU is a lightweight menu bar host for running an Audio Unit plug-in chain on
 
 ## Install
 
-1. Open the latest release and download `OpenAU-<version>.dmg`.
+1. Visit the [OpenAU download page](https://ekum1167.github.io/OpenAU-Releases/) and choose a download option.
 2. Open the disk image and drag OpenAU to Applications.
 3. Control-click OpenAU and choose **Open**. If macOS still blocks it, use **System Settings > Privacy & Security > Open Anyway**.
 4. Approve System Audio Recording when macOS asks.

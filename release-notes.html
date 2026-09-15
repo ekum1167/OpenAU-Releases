@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101318">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <title>OpenAU Release Notes</title>
+  <style>
+    :root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #0d1015; color: #f5f7fa; line-height: 1.65; }
+    main { width: min(calc(100% - 36px), 760px); margin: 0 auto; padding: 64px 0 100px; }
+    .brand { color: #36a3ff; font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 10px 0 6px; font-size: clamp(36px, 7vw, 58px); line-height: 1; letter-spacing: -.035em; }
+    h2 { margin: 38px 0 8px; font-size: 22px; }
+    p, li { color: #bdc4ce; }
+    a { color: #58b3ff; text-underline-offset: 3px; }
+    .meta { margin: 0 0 34px; color: #7f8997; }
+    .warning { margin: 26px 0; padding: 18px; border: 1px solid rgba(255,190,75,.32); border-radius: 13px; background: rgba(255,190,75,.08); color: #ead39d; }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="brand" href="index.html">OpenAU</a>
+    <h1>Release notes</h1>
+    <p class="meta">Version 0.2.0 · Preview 1 · September 2026</p>
+    <div class="warning">This is an unsigned early preview. Read the <a href="terms.html">Safety & End User Terms</a> and begin with your output volume low.</div>
+
+    <h2>What's included</h2>
+    <ul>
+      <li>An ordered chain of installed Audio Unit effects on the current Mac output.</li>
+      <li>Automatic recovery when changing interfaces, connecting AirPods, or waking the Mac.</li>
+      <li>Persistent plug-in chain, bypass state, and supported plug-in state.</li>
+      <li>Native plug-in editor sizing and multi-display window placement.</li>
+      <li>On-demand whole-Mac CPU, memory, and plug-in audio-load measurements.</li>
+      <li>Launch-at-login and restoration preferences.</li>
+    </ul>
+
+    <h2>Known limitations</h2>
+    <ul>
+      <li>Apple silicon and macOS 14.2 or later only.</li>
+      <li>Unsigned builds require manual approval in macOS and may request permission again after an update.</li>
+      <li>Some protected audio cannot be captured.</li>
+      <li>A faulty in-process AUv2 plug-in can still crash its host.</li>
+      <li>This preview is not intended for live or production-critical use.</li>
+    </ul>
+
+    <p><a href="download.html">Continue to download →</a></p>
+    <p><a href="index.html">← Back to OpenAU</a></p>
+  </main>
+</body>
+</html>
