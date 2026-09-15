@@ -118,6 +118,7 @@
     .button.primary:hover { background: #62b7ff; }
 
     .requirements { margin-top: 18px; color: var(--muted); font-size: 13px; }
+    .requirements a { text-underline-offset: 3px; }
 
     .app-card {
       overflow: hidden;
@@ -214,7 +215,7 @@
       </a>
       <div class="nav-links">
         <a href="#features">Features</a>
-        <a href="#support">Support</a>
+        <a href="#support">Download</a>
         <a href="#note">Developer's note</a>
       </div>
     </nav>
@@ -226,10 +227,10 @@
           <h1>Your plug-ins.<br>Your Mac output.</h1>
           <p class="lede">A focused menu bar app for running an always-on Audio Unit chain—without loading a DAW or paying for features you do not need.</p>
           <div class="actions">
-            <a class="button primary" href="https://github.com/ekum1167/OpenAU-Releases/releases/download/v0.2.0-preview.1/OpenAU-0.2.0.dmg">Download free</a>
-            <a class="button" href="https://github.com/ekum1167/OpenAU-Releases/releases/tag/v0.2.0-preview.1">Release notes</a>
+            <a class="button primary" href="#support">Download options</a>
+            <a class="button" href="#note">Why I built it</a>
           </div>
-          <div class="requirements">Apple silicon · macOS 14.2 or later · Audio Unit effects</div>
+          <div class="requirements">Free download · Support optional · <a href="https://github.com/ekum1167/OpenAU-Releases/releases/tag/v0.2.0-preview.1">Release notes</a><br>Apple silicon · macOS 14.2 or later · Audio Unit effects · <a href="terms.html">Safety & Terms</a></div>
         </div>
 
         <div class="app-card" aria-label="Illustration of the OpenAU menu">
@@ -283,7 +284,7 @@
         <div class="tier">
           <div><div class="tier-name">Free download</div><div class="tier-note">No account, payment, or feature restrictions.</div></div>
           <div class="tier-price">€0</div>
-          <a href="https://github.com/ekum1167/OpenAU-Releases/releases/download/v0.2.0-preview.1/OpenAU-0.2.0.dmg">Download</a>
+          <a href="download.html">Download</a>
         </div>
       </div>
       <p class="same-app">Prefer another amount? <a href="https://paypal.me/EkinOskay" target="_blank" rel="noopener">Choose it on PayPal</a>. Payment never unlocks extra features.</p>
@@ -309,12 +310,12 @@
 
   <section style="padding-top:0">
     <div class="wrap">
-      <div class="install-note"><strong>About this preview:</strong> OpenAU is currently unsigned. On first launch, Control-click the app and choose Open. If macOS still blocks it, go to System Settings → Privacy & Security → Open Anyway. OpenAU processes audio locally and does not record or transmit it.</div>
+      <div class="install-note"><strong>Audio safety:</strong> Plug-ins or device changes can produce silence, distortion, feedback, or unexpectedly loud output. Begin at a low volume and do not use OpenAU for safety-critical or production-critical audio. Read the <a href="terms.html">full Safety & Terms</a>.</div>
     </div>
   </section>
 
   <footer>
-    <div class="wrap">OpenAU is an independent project and is not affiliated with Apple, Ableton, or any plug-in manufacturer.</div>
+    <div class="wrap"><a href="terms.html">Safety & Terms</a> · OpenAU is an independent project and is not affiliated with Apple, Ableton, or any plug-in manufacturer.</div>
   </footer>
 </body>
 </html>

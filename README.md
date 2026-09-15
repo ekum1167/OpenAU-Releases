@@ -14,6 +14,7 @@ OpenAU is a lightweight menu bar host for running an Audio Unit plug-in chain on
 4. Approve System Audio Recording when macOS asks.
 
 Community previews are ad-hoc signed, so macOS displays an unidentified-developer warning and may ask for audio permission again after an update.
+Downloading or using OpenAU indicates acceptance of the [Audio Safety & End User Terms](https://ekum1167.github.io/OpenAU-Releases/terms.html).
 
 ## Support OpenAU
 

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101318">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <title>Download OpenAU</title>
+  <style>
+    :root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0d1015; color: #f5f7fa; line-height: 1.55; }
+    main { width: min(calc(100% - 36px), 680px); padding: 42px; border: 1px solid rgba(255,255,255,.12); border-radius: 20px; background: #171b22; box-shadow: 0 30px 90px rgba(0,0,0,.4); }
+    .brand { color: #36a3ff; font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 10px 0 16px; font-size: clamp(34px, 7vw, 52px); line-height: 1; letter-spacing: -.035em; }
+    p { color: #b2bac6; }
+    .warning { margin: 26px 0; padding: 18px; border: 1px solid rgba(255,190,75,.32); border-radius: 13px; background: rgba(255,190,75,.08); color: #ead39d; }
+    label { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; padding: 18px 0; color: #d9dde4; }
+    input { width: 19px; height: 19px; margin-top: 2px; accent-color: #36a3ff; }
+    a { color: #58b3ff; text-underline-offset: 3px; }
+    .download { display: flex; justify-content: center; width: 100%; margin-top: 8px; padding: 13px 18px; border-radius: 11px; background: #36a3ff; color: #07121d; font-weight: 800; text-decoration: none; }
+    .download[aria-disabled="true"] { opacity: .38; cursor: not-allowed; }
+    .back { display: inline-block; margin-top: 20px; color: #a3acba; }
+    small { display: block; margin-top: 14px; color: #7f8997; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand">OpenAU community preview</div>
+    <h1>Before you download</h1>
+    <p>OpenAU is free, but real-time audio software and third-party plug-ins can behave unpredictably.</p>
+    <div class="warning"><strong>Start with your output volume low.</strong><br>Unexpectedly loud output, feedback, distortion, silence, or interruptions may occur—especially during plug-in or audio-device changes. Do not use OpenAU where a failure could cause injury or equipment damage.</div>
+    <label>
+      <input id="agree" type="checkbox">
+      <span>I understand the audio-safety risk and agree to the <a href="terms.html" target="_blank" rel="noopener">OpenAU Safety & End User Terms</a>.</span>
+    </label>
+    <a id="download" class="download" aria-disabled="true" href="#">Download OpenAU 0.2.0</a>
+    <small>Unsigned Apple-silicon preview for macOS 14.2 or later. macOS will require an additional confirmation when opening it.</small>
+    <a class="back" href="index.html">← Back to OpenAU</a>
+  </main>
+  <script>
+    const checkbox = document.getElementById('agree');
+    const download = document.getElementById('download');
+    const fileURL = 'https://github.com/ekum1167/OpenAU-Releases/releases/download/v0.2.0-preview.1/OpenAU-0.2.0.dmg';
+    checkbox.addEventListener('change', () => {
+      const accepted = checkbox.checked;
+      download.setAttribute('aria-disabled', String(!accepted));
+      download.href = accepted ? fileURL : '#';
+    });
+    download.addEventListener('click', event => {
+      if (!checkbox.checked) event.preventDefault();
+    });
+  </script>
+</body>
+</html>
