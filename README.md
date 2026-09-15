@@ -2,6 +2,8 @@
 
 Official macOS downloads for OpenAU.
 
+Visit the [OpenAU download page](https://ekum1167.github.io/OpenAU-Releases/) for the free download, optional support tiers, and the developer's note.
+
 OpenAU is a lightweight menu bar host for running an Audio Unit plug-in chain on the current Mac output. The source code is maintained in a private repository; this public repository contains release binaries and checksums only.
 
 ## Install

@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="OpenAU is a focused macOS menu bar host for running Audio Unit plug-ins on your Mac output.">
+  <meta name="theme-color" content="#101318">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <title>OpenAU — Audio Units on your Mac output</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --background: #0d1015;
+      --surface: #171b22;
+      --surface-raised: #202631;
+      --text: #f5f7fa;
+      --muted: #a3acba;
+      --line: rgba(255, 255, 255, 0.11);
+      --blue: #36a3ff;
+      --blue-strong: #1687e6;
+      --green: #3ddc84;
+      --support: #efd789;
+      --support-ink: #19170f;
+      --max-width: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .brand svg { color: var(--blue); }
+
+    .nav-links { display: flex; gap: 22px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; }
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+      gap: 72px;
+      align-items: center;
+      padding: 92px 0 104px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 750;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 14px 0 22px;
+      font-size: clamp(46px, 7vw, 78px);
+      line-height: .98;
+      letter-spacing: -.045em;
+    }
+
+    .lede {
+      max-width: 650px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 22px);
+    }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .15s ease, background .15s ease;
+    }
+
+    .button:hover { transform: translateY(-1px); background: var(--surface-raised); }
+    .button.primary { border-color: transparent; background: var(--blue); color: #06111b; }
+    .button.primary:hover { background: #62b7ff; }
+
+    .requirements { margin-top: 18px; color: var(--muted); font-size: 13px; }
+
+    .app-card {
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 20px;
+      background: linear-gradient(145deg, #272d36, #171b21);
+      box-shadow: 0 34px 90px rgba(0,0,0,.38);
+    }
+
+    .app-head { display: flex; align-items: center; gap: 10px; padding: 18px; border-bottom: 1px solid var(--line); }
+    .app-title { font-weight: 750; }
+    .app-state { color: var(--muted); font-size: 12px; }
+    .switch { width: 44px; height: 26px; margin-left: auto; border-radius: 99px; background: var(--blue); }
+    .switch::after { content: ""; display: block; width: 20px; height: 20px; margin: 3px 3px 3px auto; border-radius: 50%; background: white; }
+    .flow { display: flex; align-items: center; gap: 8px; padding: 12px 18px; color: var(--muted); font-size: 13px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+    .chain { display: grid; gap: 8px; padding: 14px; }
+    .plugin { display: flex; align-items: center; padding: 13px; border-radius: 11px; background: rgba(255,255,255,.075); }
+    .plugin-icon { display: grid; place-items: center; width: 34px; height: 34px; margin-right: 11px; border-radius: 9px; background: rgba(54,163,255,.18); color: var(--blue); }
+    .plugin strong, .plugin small { display: block; }
+    .plugin small { color: var(--muted); }
+    .power { margin-left: auto; color: var(--blue); }
+    .app-foot { padding: 14px 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+
+    section { padding: 88px 0; }
+    h2 { margin: 0 0 16px; font-size: clamp(32px, 5vw, 48px); letter-spacing: -.03em; line-height: 1.05; }
+    .section-intro { max-width: 680px; margin: 0 0 42px; color: var(--muted); font-size: 18px; }
+
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .feature { padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+    .feature h3 { margin: 0 0 8px; font-size: 18px; }
+    .feature p { margin: 0; color: var(--muted); }
+
+    .support-section { background: var(--support); color: var(--support-ink); }
+    .support-section .section-intro { color: rgba(25,23,15,.7); }
+    .tiers { border-top: 1px solid rgba(25,23,15,.28); }
+    .tier {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 24px;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(25,23,15,.28);
+    }
+    .tier-name { font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .tier-note { color: rgba(25,23,15,.66); font-size: 14px; }
+    .tier-price { min-width: 84px; text-align: right; font-weight: 800; font-size: 18px; }
+    .tier a {
+      min-width: 140px;
+      padding: 10px 16px;
+      border: 1px solid rgba(25,23,15,.42);
+      border-radius: 10px;
+      color: var(--support-ink);
+      font-weight: 750;
+      text-align: center;
+      text-decoration: none;
+    }
+    .tier.recommended a { background: var(--support-ink); color: var(--support); }
+    .same-app { margin: 20px 0 0; font-size: 14px; font-weight: 650; }
+
+    .note { max-width: 760px; }
+    .note p { color: #c4cad3; font-size: 18px; }
+    .signature { margin-top: 30px; color: var(--text) !important; }
+    .socials { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 30px; }
+    .socials a { color: var(--blue); text-underline-offset: 4px; }
+
+    .install-note {
+      padding: 20px;
+      border: 1px solid rgba(255,190,75,.3);
+      border-radius: 14px;
+      background: rgba(255,190,75,.08);
+      color: #e4c98c;
+    }
+
+    footer { padding: 32px 0 46px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+
+    @media (max-width: 780px) {
+      .hero { grid-template-columns: 1fr; gap: 46px; padding-top: 58px; }
+      .features { grid-template-columns: 1fr; }
+      .tier { grid-template-columns: 1fr auto; }
+      .tier a { grid-column: 1 / -1; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav aria-label="Primary navigation">
+      <a class="brand" href="#top">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <path d="M2 14h5l2.4-8 4.1 16 3.2-12 2.2 7H26" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        OpenAU
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#support">Support</a>
+        <a href="#note">Developer's note</a>
+      </div>
+    </nav>
+
+    <main id="top">
+      <div class="hero">
+        <div>
+          <div class="eyebrow">Free macOS audio utility</div>
+          <h1>Your plug-ins.<br>Your Mac output.</h1>
+          <p class="lede">A focused menu bar app for running an always-on Audio Unit chain—without loading a DAW or paying for features you do not need.</p>
+          <div class="actions">
+            <a class="button primary" href="https://github.com/ekum1167/OpenAU-Releases/releases/download/v0.2.0-preview.1/OpenAU-0.2.0.dmg">Download free</a>
+            <a class="button" href="https://github.com/ekum1167/OpenAU-Releases/releases/tag/v0.2.0-preview.1">Release notes</a>
+          </div>
+          <div class="requirements">Apple silicon · macOS 14.2 or later · Audio Unit effects</div>
+        </div>
+
+        <div class="app-card" aria-label="Illustration of the OpenAU menu">
+          <div class="app-head">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+              <path d="M2 14h5l2.4-8 4.1 16 3.2-12 2.2 7H26" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div><div class="app-title">OpenAU</div><div class="app-state">On · Mac output</div></div>
+            <div class="switch"></div>
+          </div>
+          <div class="flow"><span class="dot"></span> Audio flowing</div>
+          <div class="chain">
+            <div class="plugin"><span class="plugin-icon">≋</span><span><strong>Headphone EQ</strong><small>Audio Unit</small></span><span class="power">●</span></div>
+            <div class="plugin"><span class="plugin-icon">≋</span><span><strong>Reference Meter</strong><small>Audio Unit</small></span><span class="power">●</span></div>
+          </div>
+          <div class="app-foot">＋ Add Plug-in</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="eyebrow">Focused by design</div>
+      <h2>One job, done simply.</h2>
+      <p class="section-intro">OpenAU leaves out routing matrices, built-in effects, and volume boosters. Build a chain from the plug-ins you already own and keep it available across your Mac.</p>
+      <div class="features">
+        <article class="feature"><h3>Use your own Audio Units</h3><p>Add, reorder, bypass, and open the native editor for each plug-in.</p></article>
+        <article class="feature"><h3>Built for changing outputs</h3><p>Designed around interfaces, AirPods handoffs, disconnects, sleep, and wake.</p></article>
+        <article class="feature"><h3>Low-overhead workflow</h3><p>Monitoring is on demand and the plug-in chain lives outside your DAW project.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="support-section" id="support">
+    <div class="wrap">
+      <div class="eyebrow" style="color:inherit">Pay what feels right</div>
+      <h2>Free for everyone.</h2>
+      <p class="section-intro">Every option downloads the same complete app. Support is optional and helps fund maintenance, fixes, and future improvements.</p>
+      <div class="tiers">
+        <div class="tier recommended">
+          <div><div class="tier-name">Suggested support</div><div class="tier-note">A fair contribution if OpenAU becomes part of your workflow.</div></div>
+          <div class="tier-price">€10</div>
+          <a href="https://paypal.me/EkinOskay/10EUR" target="_blank" rel="noopener">Support €10</a>
+        </div>
+        <div class="tier">
+          <div><div class="tier-name">Extra support</div><div class="tier-note">For helping development go a little further.</div></div>
+          <div class="tier-price">€25</div>
+          <a href="https://paypal.me/EkinOskay/25EUR" target="_blank" rel="noopener">Support €25</a>
+        </div>
+        <div class="tier">
+          <div><div class="tier-name">Free download</div><div class="tier-note">No account, payment, or feature restrictions.</div></div>
+          <div class="tier-price">€0</div>
+          <a href="https://github.com/ekum1167/OpenAU-Releases/releases/download/v0.2.0-preview.1/OpenAU-0.2.0.dmg">Download</a>
+        </div>
+      </div>
+      <p class="same-app">Prefer another amount? <a href="https://paypal.me/EkinOskay" target="_blank" rel="noopener">Choose it on PayPal</a>. Payment never unlocks extra features.</p>
+    </div>
+  </section>
+
+  <section id="note">
+    <div class="wrap note">
+      <div class="eyebrow">Developer's note</div>
+      <h2>Built for a problem I had myself.</h2>
+      <p>Hi everyone, I'm Ekin. I built OpenAU to solve an issue that had followed me for years. As both a developer and a DJ/producer, I wanted one small, dependable app that would let me run my own Audio Unit plug-ins directly on my Mac's output.</p>
+      <p>My main use is a corrective EQ for my headphones. I also use analysis plug-ins while listening to music on streaming services, so I can check loudness, stereo image, and tonal balance and compare references with my own tracks—without downloading files or setting up a DAW session.</p>
+      <p>I tried other apps, but they included features I did not need and could become unstable when switching audio devices. OpenAU focuses on one thing: a simple output plug-in chain that can recover from interface changes, AirPods handoffs, sleep, and restarts.</p>
+      <p>OpenAU is free, and every download is the same full version. I am not building it around feature restrictions or maximizing profit. If it helps your workflow, optional support lets me spend more time maintaining it, fixing bugs, and adding thoughtful improvements.</p>
+      <p class="signature">Sincerely,<br><strong>Ekin</strong></p>
+      <div class="socials">
+        <a href="https://instagram.com/ekinoskay" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://open.spotify.com/artist/2fIABfb3zaB6l5c2NW91Yr" target="_blank" rel="noopener">Spotify</a>
+        <a href="https://soundcloud.com/ekinoskay" target="_blank" rel="noopener">SoundCloud</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="install-note"><strong>About this preview:</strong> OpenAU is currently unsigned. On first launch, Control-click the app and choose Open. If macOS still blocks it, go to System Settings → Privacy & Security → Open Anyway. OpenAU processes audio locally and does not record or transmit it.</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">OpenAU is an independent project and is not affiliated with Apple, Ableton, or any plug-in manufacturer.</div>
+  </footer>
+</body>
+</html>
