@@ -143,6 +143,16 @@
     .power { margin-left: auto; color: var(--blue); }
     .app-foot { padding: 14px 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
 
+    .demo-section { padding-top: 0; }
+    .demo-frame {
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 20px;
+      background: #090b0f;
+      box-shadow: 0 28px 80px rgba(0,0,0,.32);
+    }
+    .demo-frame video { display: block; width: 100%; height: auto; background: #090b0f; }
+
     section { padding: 88px 0; }
     h2 { margin: 0 0 16px; font-size: clamp(32px, 5vw, 48px); letter-spacing: -.03em; line-height: 1.05; }
     .section-intro { max-width: 680px; margin: 0 0 42px; color: var(--muted); font-size: 18px; }
@@ -214,6 +224,7 @@
         OpenAU
       </a>
       <div class="nav-links">
+        <a href="#demo">Demo</a>
         <a href="#features">Features</a>
         <a href="#support">Download</a>
         <a href="#note">Developer's note</a>
@@ -228,7 +239,7 @@
           <p class="lede">A focused menu bar app for running an always-on Audio Unit chain—without loading a DAW or paying for features you do not need.</p>
           <div class="actions">
             <a class="button primary" href="#support">Download options</a>
-            <a class="button" href="#note">Why I built it</a>
+            <a class="button" href="#demo">Watch 15s demo</a>
           </div>
           <div class="requirements">Free download · Support optional · <a href="release-notes.html">Release notes</a><br>Apple silicon · macOS 14.2 or later · Audio Unit effects · <a href="terms.html">Safety & Terms</a></div>
         </div>
@@ -251,6 +262,20 @@
       </div>
     </main>
   </div>
+
+  <section class="demo-section" id="demo" aria-labelledby="demo-title">
+    <div class="wrap">
+      <div class="eyebrow">See it in action</div>
+      <h2 id="demo-title">A complete plug-in chain in 15 seconds.</h2>
+      <p class="section-intro">Enable processing, bypass and reorder plug-ins, then keep listening while your output device changes.</p>
+      <div class="demo-frame">
+        <video autoplay muted loop playsinline controls preload="metadata" poster="media/OpenAU-demo-poster.jpg">
+          <source src="media/OpenAU-demo-15s.mp4" type="video/mp4">
+          <p>Your browser cannot play this video. <a href="media/OpenAU-demo-15s.mp4">Download the 15-second demo</a>.</p>
+        </video>
+      </div>
+    </div>
+  </section>
 
   <section id="features">
     <div class="wrap">
