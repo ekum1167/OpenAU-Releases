@@ -26,6 +26,7 @@
     .install-guide ol { margin: 0; padding-left: 22px; color: #d9dde4; }
     .install-guide li { padding: 4px 0 4px 5px; }
     .install-guide strong { color: #f5f7fa; }
+    .install-note { margin-top: 16px !important; padding: 14px; border-radius: 10px; background: rgba(54,163,255,.09); color: #cfe9ff !important; }
     .back { display: inline-block; margin-top: 20px; color: #a3acba; }
     small { display: block; margin-top: 14px; color: #7f8997; }
   </style>
@@ -48,10 +49,11 @@
       <ol>
         <li>Open the DMG and drag <strong>OpenAU</strong> into <strong>Applications</strong>.</li>
         <li>Try opening OpenAU once. If macOS blocks it, close the warning.</li>
-        <li>Go to <strong>System Settings → Privacy &amp; Security</strong>, scroll to <strong>Security</strong>, and click <strong>Open Anyway</strong> beside OpenAU.</li>
-        <li>Confirm <strong>Open Anyway</strong>. OpenAU will appear as a waveform icon in the menu bar rather than in the Dock.</li>
-        <li>When requested, allow OpenAU under <strong>Privacy &amp; Security → Screen &amp; System Audio Recording</strong>. On some macOS versions this is named <strong>Screen Recording</strong>.</li>
+        <li>Go to <strong>System Settings → Privacy &amp; Security</strong> and scroll to <strong>Security</strong>. Click <strong>Open</strong> or <strong>Open Anyway</strong> for OpenAU, then confirm <strong>Open Anyway</strong>.</li>
+        <li>Look for the waveform icon in the menu bar. OpenAU does not display a normal window or Dock icon.</li>
+        <li>Click the waveform and switch <strong>Processing</strong> on. This is what triggers the <strong>Screen &amp; System Audio Recording</strong> request. On some macOS versions the category is named <strong>Screen Recording</strong>.</li>
       </ol>
+      <p class="install-note"><strong>No Open/Open Anyway button?</strong> Move OpenAU to Applications, try opening it again, and return to Privacy &amp; Security within about one hour. Confirm the Mac uses Apple silicon and macOS 14.2 or later. Organization-managed Macs may prevent users from making this exception. See <a href="https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac" target="_blank" rel="noopener">Apple's instructions</a>.</p>
     </section>
     <a class="back" href="index.html">← Back to OpenAU</a>
   </main>
